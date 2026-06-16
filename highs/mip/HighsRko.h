@@ -20,6 +20,16 @@ const double kRkoRandomKeyBaseWeight = 0.75;
 const double kRkoRandomKeyRangeWeight = 0.5;
 const double kRkoFeasibilityTolerance = 1e-9;
 
+struct RkoKnapsackData {
+  HighsInt num_item = 0;
+  double capacity = 0.0;
+  std::vector<double> profit;
+  std::vector<double> weight;
+};
+
 bool rkoHeuristic(const HighsLp* lp, std::vector<double>& solution);
+bool setupKnapsackProblem(const HighsLp* lp, RkoKnapsackData& knapsack);
+void searchKnapsackProblem(const RkoKnapsackData& knapsack,
+                           std::vector<double>& solution);
 
 #endif

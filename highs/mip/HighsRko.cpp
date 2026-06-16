@@ -12,13 +12,6 @@
 #include <numeric>
 #include <vector>
 
-struct RkoKnapsackData {
-  HighsInt num_item = 0;
-  double capacity = 0.0;
-  std::vector<double> profit;
-  std::vector<double> weight;
-};
-
 bool setupKnapsackProblem(const HighsLp* lp, RkoKnapsackData& knapsack) {
   if (lp->mip_type_ != kMipTypeKnapsack) return false;
   if (lp->num_col_ <= 0 || lp->num_row_ != 1) return false;
